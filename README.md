@@ -1,1 +1,1 @@
-# ruby-beginner
+# Ruby on rails beginner
