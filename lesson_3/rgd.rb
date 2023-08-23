@@ -38,7 +38,7 @@ train2.current_speed(260)
 
 train3.stop
 
-train3.get_route(route2)
+train3.set_route(route2)
 
 train3.moving_next_station 
 train3.moving_next_station
