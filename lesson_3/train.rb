@@ -1,16 +1,16 @@
 class Train 
-  attr_reader :number, :type
-  attr_accessor :amount_wagons, :speed
+  attr_reader :number, :type, :routes
+  attr_accessor :speed
   attr_accessor :previous_station, :current_station, :next_station
   
   
-  def initialize(number, type, amount_wagons)
+  def initialize(number, type)
     @number = number
     @type = type
-    @amount_wagons = amount_wagons
     @speed = 0
-    @wagons_train = []
+    @wagons = []
     @current_station = nil
+    @routes = []
   end  
 
   def current_speed(speed)
@@ -21,28 +21,26 @@ class Train
   def stop 
     @speed = 0
   end
+  
+  def add_wagons(wagon) 
+    if @speed == 0
+    @wagons << wagon
+    end 
+  end    
+  
+  def delete_wagons(wagon)
+      if @speed == 0
+      @wagons.delete(wagon)
+    end
+  end
 
-  def add_wagons
-    if @speed == 0
-       @amount_wagons += 1
-      puts "Количество вагонов в поезде №#{@number}, после прицепки составляет #{@amount_wagons}"
-    end
-  end
-  
-  def delete_wagons
-    if @speed == 0
-       @amount_wagons -= 1
-      puts "Количество вагонов в поезде №#{@number}, после отцепки составляет #{@amount_wagons}"
-    end
-  end
-  
-  def get_route(route) 
-    @route = route
+  def set_route(route) 
+    @route = route 
+    @routes << route
     @current_station = route.start_station
-    @route.start_station.get_train(self)
-    puts "Поезд №#{@number} начинает маршрут со станции #{@current_station.name}"
+    route.start_station.get_train(self)
+    puts "Поезд №#{self.number} принял маршрут:\"#{route.start_station.name} - #{route.end_station.name}\""
   end
-
 
   def moving_next_station
     @current_station.send_train(self)
@@ -66,8 +64,9 @@ class Train
     else                                                     
       puts "Поезд прибыл на начальную станцию маршрута: #{@current_station.name}"
     end
-  end                                                                                           
+  end 
 end 
+
 
 
 
