@@ -150,23 +150,28 @@ class Main
   def add_station 
     route = select_route
     puts "Выбран маршрут: \"#{route.start_station.name} - #{route.end_station.name}\""
-    puts "Выберите станцию для добавления в маршрут:"
-    station = list_stations
-    loop do 
-    if route.stations.include?(station) 
-      puts "Станция \"#{station.name}\" входит в маршрут. Выберите другую станцию из списка:" 
-      station = list_stations
-      next if route.stations.include?(station) 
-      route.stations.push(station)
-      puts "Станция \"#{station.name}\" добавлена в маршрут."
-      break 
+    if @stations.size < 3
+      puts "Для добавления станции в маршрут необходимо создать три станции."
+      create_station
     else
-      route.stations.push(station)
-      puts "Станция \"#{station.name}\" добавлена в маршрут." 
+      puts "Выберите станцию для добавления в маршрут:"
+      station = list_stations
+      loop do 
+      if route.stations.include?(station) 
+        puts "Станция \"#{station.name}\" входит в маршрут. Выберите другую станцию из списка:" 
+        station = list_stations
+        next if route.stations.include?(station) 
+        route.stations.push(station)
+        puts "Станция \"#{station.name}\" добавлена в маршрут."
+        break 
+      else
+        route.stations.push(station)
+        puts "Станция \"#{station.name}\" добавлена в маршрут." 
+        end
       end
     end
   end
-
+  
   def delete_station 
     route = select_route
     puts "Выбран маршрут: \"#{route.start_station.name} - #{route.end_station.name}\""

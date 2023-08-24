@@ -1,5 +1,4 @@
 class CargoTrain < Train
-  # attr_reader :type
 
   def add_wagon(wagon) 
     super if wagon.type == 'cargo' 
