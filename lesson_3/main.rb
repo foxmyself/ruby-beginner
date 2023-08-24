@@ -53,7 +53,7 @@ class Main
     when "6" 
       delete_station 
     when "7"
-      add_wagons 
+      add_wagon 
     when "8"
       delete_wagons 
     when "9"
@@ -99,6 +99,7 @@ class Main
       puts "Cоздан маршрут: \"#{start_station.name} - #{end_station.name}\""
     end
   end
+  
 
   def create_train   
     puts "Введите номер поезда:"
@@ -155,7 +156,7 @@ class Main
     if route.stations.include?(station) 
       puts "Станция \"#{station.name}\" входит в маршрут. Выберите другую станцию из списка:" 
       station = list_stations
-      next if route.stations.include?(station)
+      next if route.stations.include?(station) 
       route.stations.push(station)
       puts "Станция \"#{station.name}\" добавлена в маршрут."
       break 
@@ -190,11 +191,11 @@ class Main
       create_train
       puts "Выберите номер поезда из списка:"  
       @trains.each_with_index {|train, index| puts "#{index + 1} : №#{train.number}, #{train.type} поезд"}
-      train = @trains[gets.chomp.to_s - 1] 
+      train = @trains[gets.chomp.to_i - 1] 
     else
       puts "Выберите номер поезда из списка:"  
       @trains.each_with_index {|train, index| puts "#{index + 1} : №#{train.number}, #{train.type} поезд"}
-      train = @trains[gets.chomp.to_s - 1]
+      train = @trains[gets.chomp.to_i - 1]
     end
   end
 
@@ -204,11 +205,11 @@ class Main
       create_wagon
       puts "Выберите вагон из списка:"  
       @wagons.each_with_index {|wagon, index| puts "#{index + 1} : #{wagon.type} вагон"} 
-      wagon = @wagons[gets.chomp.to_s - 1]
+      wagon = @wagons[gets.chomp.to_i - 1]
     else
       puts "Выберите вагон из списка:"  
       @wagons.each_with_index {|wagon, index| puts "#{index + 1} : #{wagon.type} вагон"} 
-      wagon = @wagons[gets.chomp.to_s - 1]
+      wagon = @wagons[gets.chomp.to_i - 1]
     end
   end
 
@@ -218,30 +219,30 @@ class Main
       create_route 
       puts "Выберите маршрут из списка:"  
       @routes.each_with_index {|route, index| puts "#{index + 1} : \"#{route.start_station.name} - #{route.end_station.name}\""}
-      route = @routes[gets.chomp.to_s - 1] 
+      route = @routes[gets.chomp.to_i - 1] 
     else 
       puts "Выберите маршрут из списка:"  
       @routes.each_with_index {|route, index| puts "#{index + 1} : \"#{route.start_station.name} - #{route.end_station.name}\""}
-      route = @routes[gets.chomp.to_s - 1]
+      route = @routes[gets.chomp.to_i - 1]
     end
   end
   
-  def add_wagons 
+  def add_wagon 
     train = select_train
     wagon = select_wagon
     if train.type == wagon.type
-       train.add_wagons(wagon)
+       train.add_wagon(wagon)
        puts "Поезд №#{train.number} прицепил #{wagon.type} вагон"
     else 
       puts "Вагон не добавлен.Tип поезда и вагона должны совпадать."
     end
   end   
 
-  def delete_wagons 
+  def delete_wagon
     train = select_train
     wagon = select_wagon   
     if train.type == wagon.type 
-      train.delete_wagons(wagon)
+      train.delete_wagon(wagon)
       puts "Поезд №#{train.number} отцепил #{wagon.type} вагон"
     else 
       puts "Вагон не добавлен.Tип поезда и вагона должен совпадать"
@@ -283,7 +284,7 @@ class Main
     else
       puts "Cписок станций:"
       @stations.each_with_index {|station, index| puts "#{index + 1} : \"#{station.name}\""}
-      station = @stations[gets.chomp.to_s - 1]
+      station = @stations[gets.chomp.to_i - 1]
     end 
   end
   

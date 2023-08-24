@@ -59,16 +59,16 @@ passengertrain1 = PassengerTrain.new(169,"passenger")
 cargotrain1.current_speed(0)
 passengertrain1.current_speed(0)
 
-cargotrain1.add_wagons(cargowagon)
-cargotrain1.add_wagons(cargowagon2)
-cargotrain1.add_wagons(cargowagon1)
+cargotrain1.add_wagon(cargowagon)
+cargotrain1.add_wagon(cargowagon2)
+cargotrain1.add_wagon(cargowagon1)
 
 cargotrain1.show_wagons
 
 passengertrain1.add_wagons(passengerwagon1)
 
-cargotrain1.delete_wagons(cargowagon1)
-cargotrain1.delete_wagons(cargowagon2)
+cargotrain1.delete_wagon(cargowagon1)
+cargotrain1.delete_wagon(cargowagon2)
 
 passengertrain1.show_wagons
 
