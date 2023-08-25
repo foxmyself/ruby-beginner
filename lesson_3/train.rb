@@ -29,9 +29,14 @@ class Train
   end    
   
   def delete_wagon(wagon)
-      if @speed == 0
-      @wagons.delete(wagon)
+    if @speed == 0
+    @wagons.delete(wagon)
     end
+  end
+
+  def show_wagons
+    @wagons.size 
+    puts "Количество вагонов в поезде №#{@number} равно #{@wagons.size}"
   end
 
   def set_route(route) 

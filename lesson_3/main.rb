@@ -99,7 +99,6 @@ class Main
       puts "Cоздан маршрут: \"#{start_station.name} - #{end_station.name}\""
     end
   end
-  
 
   def create_train   
     puts "Введите номер поезда:"
@@ -184,7 +183,7 @@ class Main
       create_train
       puts "Выберите номер поезда из списка:"  
       @trains.each_with_index {|train, index| puts "#{index + 1} : №#{train.number}, #{train.type} поезд"}
-      train = @trains[gets.chomp.to_i - 1] 
+      train = @trains[gets.chomp.to_i - 1]
     else
       puts "Выберите номер поезда из списка:"  
       @trains.each_with_index {|train, index| puts "#{index + 1} : №#{train.number}, #{train.type} поезд"}
