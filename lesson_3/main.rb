@@ -107,13 +107,13 @@ class Main
     while choice = gets.chomp.to_s
       case choice  
       when "1"
-        type = 'passenger' 
+        type = :passenger 
         train = PassengerTrain.new(number, type)
         @trains << train
         puts "Создан пассажирский поезд №#{train.number}"
         break
       when "2"
-        type = 'cargo'
+        type = :cargo
         train = CargoTrain.new(number, type)
         @trains << train
         puts "Cоздан грузовой поезд №#{train.number}"
@@ -129,13 +129,13 @@ class Main
     while сhoice = gets.chomp.to_s
       case сhoice
       when "1"
-        type = 'passenger' 
+        type = :passenger 
         wagon = PassengerWagon.new(type)
         @wagons << wagon 
         puts "Создан #{wagon.type} вагон."
         break
       when "2"
-        type = 'cargo'
+        type = :cargo
         wagon = CargoWagon.new(type)
         @wagons << wagon 
         puts "Создан #{wagon.type} вагон."

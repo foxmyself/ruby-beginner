@@ -1,5 +1,11 @@
 class CargoTrain < Train
-end  
+
+  def initialize(number)
+    @type = :cargo
+    super
+  end
+end 
+ 
 
  
 

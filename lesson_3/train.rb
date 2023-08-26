@@ -4,9 +4,8 @@ class Train
   attr_accessor :previous_station, :current_station, :next_station
   
   
-  def initialize(number, type)
+  def initialize(number)
     @number = number
-    @type = type
     @speed = 0
     @wagons = []
     @current_station = nil
