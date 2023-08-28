@@ -88,6 +88,7 @@ class Main
     if @stations.size < 2
       puts "Для создания маршрута необходимо создать две станции."  
       create_station
+    elsif @stations.size = 1
       create_station
       puts "Выберите начальную станцию маршрута:"
       @stations.each_with_index{|station, index| puts "#{index + 1} : \"#{station.name}\""}
