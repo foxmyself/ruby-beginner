@@ -3,6 +3,7 @@ require './train.rb'
 require './route.rb'
 require './cargo_train.rb'
 require './passenger_train.rb'
+require './wagon.rb'
 require './cargo_wagon.rb'
 require './passenger_wagon.rb'
 
@@ -12,9 +13,9 @@ station3 = Station.new("Khabarovsk")
 station4 = Station.new("Vladivostok")
 station5 = Station.new("Novosibirsk")
 
-train1 = Train.new(324, "cargo")
-train2 = Train.new(524, "cargo")
-train3 = Train.new(54, "passenger")
+train1 = CargoTrain.new(324)
+train2 = CargoTrain.new(524)
+train3 = PassengerTrain.new(54)
 
 route1 = Routes.new(station1,station2)
 route2 = Routes.new(station4,station3)
@@ -48,13 +49,13 @@ train3.moving_previous_station
 train3.moving_previous_station
 train3.moving_previous_station
 
-cargowagon = CargoWagon.new("cargo")
-cargowagon1 = CargoWagon.new("cargo")
-cargowagon2 = CargoWagon.new("cargo")
-passengerwagon1 = PassengerWagon.new("passenger")
+cargowagon = CargoWagon.new
+cargowagon1 = CargoWagon.new
+cargowagon2 = CargoWagon.new
+passengerwagon1 = PassengerWagon.new
 
-cargotrain1 = CargoTrain.new(185,"cargo")
-passengertrain1 = PassengerTrain.new(169,"passenger")
+cargotrain1 = CargoTrain.new(185)
+passengertrain1 = PassengerTrain.new(169)
 
 cargotrain1.current_speed(0)
 passengertrain1.current_speed(0)
@@ -65,7 +66,7 @@ cargotrain1.add_wagon(cargowagon1)
 
 cargotrain1.show_wagons
 
-passengertrain1.add_wagons(passengerwagon1)
+passengertrain1.add_wagon(passengerwagon1)
 
 cargotrain1.delete_wagon(cargowagon1)
 cargotrain1.delete_wagon(cargowagon2)
