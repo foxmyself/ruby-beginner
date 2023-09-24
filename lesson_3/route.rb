@@ -1,10 +1,15 @@
+require './instance_counter.rb'
+
 class Routes 
+  include InstanceCounter
+
   attr_reader :start_station, :end_station, :stations
   
   def initialize(start_station, end_station)
     @start_station = start_station
     @end_station = end_station
     @stations = [start_station, end_station]
+    register_instance
   end
 
   def add_station(station)

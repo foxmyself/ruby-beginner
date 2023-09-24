@@ -1,8 +1,13 @@
+require './company.rb'
+require './instance_counter.rb'
+
 class Train 
+  include Company
+  include InstanceCounter
+
   attr_reader :number, :type, :routes
   attr_accessor :speed
   attr_accessor :previous_station, :current_station, :next_station 
-  
   
   def initialize(number)
     @number = number
@@ -10,7 +15,17 @@ class Train
     @wagons = []
     @current_station = nil
     @routes = []
+    register_instance
   end  
+
+  @@trains = []
+   
+
+  def self.find(number)
+    train = @@trains.find { |train| train.number == number }
+    
+    return train.nil? ? nil : train
+  end
 
   def current_speed(speed)
     @speed += speed
@@ -57,7 +72,7 @@ class Train
       puts "Поезд прибыл на конечную станцию маршрута: #{@current_station.name}"
     end
   end
-    
+  
   def moving_previous_station 
     @current_station.send_train(self)
     previous_station_index = @route.stations.index(@current_station) - 1
@@ -68,7 +83,7 @@ class Train
     else                                                     
       puts "Поезд прибыл на начальную станцию маршрута: #{@current_station.name}"
     end
-  end 
+  end
 end 
 
 
