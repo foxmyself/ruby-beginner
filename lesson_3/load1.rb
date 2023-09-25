@@ -32,6 +32,4 @@ puts CargoTrain.instances
 puts Station.instances
 puts Routes.instances
 
-train1.register_instance
-station3.register_instance
-route1.register_instance
+
